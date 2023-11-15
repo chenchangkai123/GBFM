@@ -1,0 +1,19 @@
+# Gaussian Beam for Forward and Migration (GBFM)
+
+The world's best software for 2D Gaussian Beam Migration and Forward Modeling.
+
+## Installation
+
+make
+
+make install 
+
+## Usage
+
+see demo directory
+
+## Contributing
+
+changzm23@mails.jlu.edu.cn
+
+caoyq23@mails.jlu.edu.cn
