@@ -21,8 +21,8 @@ subtract : subtract.o $(CORE) $(PAR)
 	$(GCC) -o subtract subtract.o $(CORE) $(PAR) $(FLAGS)
 generate : generate.o $(CORE) $(PAR)
 	$(GCC) -o generate generate.o $(CORE) $(PAR) $(FLAGS)
-migrationCBM : migrationCBM.o $(CORE) $(PAR)
-	$(MPICC) -o migrationCBM migrationCBM.o $(CORE) $(PAR) $(FLAGS)
+migrationGBS : migrationGBS.o $(CORE) $(PAR)
+	$(MPICC) -o migrationGBS migrationGBS.o $(CORE) $(PAR) $(FLAGS)
 
 forward.o : forward.c
 	$(GCC) -c forward.c

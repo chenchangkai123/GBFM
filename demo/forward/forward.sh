@@ -38,7 +38,8 @@ headInfo=headInfo # input
 
 # generate the seismic file
 ../../bin/forward naper=$naper nt=$nt nx=$nx nz=$nz dt=$dt dx=$dx dz=$dz amax=$amax nshot=$nshot\
-    reftfile=$reftfile orgfile=$orgfile vfile=$vfile headInfo=$headInfo
+    reftfile=$reftfile orgfile=$orgfile vfile=$vfile headInfo=$headInfo \
+    ntr=$ntr dtr=$dtr
 
 
 # SU ximage (be sure you have SU installed)

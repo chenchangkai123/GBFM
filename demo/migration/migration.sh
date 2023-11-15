@@ -34,7 +34,7 @@ imgfile=mig.dat # output
 
 # migration
 mpirun -n 1 ../../bin/migration naper=$naper nt=$nt nx=$nx nz=$nz dt=$dt dx=$dx dz=$dz amax=$amax nshot=$nshot\
-     seifile=$seifile vfile=$vfile imgfile=$imgfile headInfo=$headInfo
+     seifile=$seifile vfile=$vfile imgfile=$imgfile headInfo=$headInfo ntr=$ntr dtr=$dtr
 
 # SU ximage (be sure you have SU installed)
 # ximage < $imgfile n1=$nz
