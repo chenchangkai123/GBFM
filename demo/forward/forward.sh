@@ -29,6 +29,7 @@ amax=50
 vfile=../../data/mar_vel_737_750_sun.sgy # input
 reftfile=reflectivity.dat # output
 orgfile=shot.dat # output
+headInfo=headInfo # input
 
 
 # generate the head file
@@ -37,7 +38,7 @@ orgfile=shot.dat # output
 
 # generate the seismic file
 ../../bin/forward naper=$naper nt=$nt nx=$nx nz=$nz dt=$dt dx=$dx dz=$dz amax=$amax nshot=$nshot\
-    reftfile=$reftfile orgfile=$orgfile vfile=$vfile
+    reftfile=$reftfile orgfile=$orgfile vfile=$vfile headInfo=$headInfo
 
 
 # SU ximage (be sure you have SU installed)
