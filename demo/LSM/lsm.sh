@@ -27,7 +27,7 @@ dt=0.004
 dx=12.5
 dz=4
 amax=50
-vfile=../../data/mar_vel_737_750_sun.sgy # input
+vfile=../../data/vel_marmousi # input
 reftfile=reflectivity.dat # output
 orgfile=shot_0.dat # output
 
