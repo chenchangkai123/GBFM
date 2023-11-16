@@ -204,7 +204,7 @@ int main(int argc, char **argv)
     // printf("elevdata[0]=%f\n", elevdata[0]);
 
     printf("ntr=%d, nz=%d\n", ntr, nz);
-    printf("job done!\n");
+    printf("Cut file %s generated.\n", output);
 
     return (0);
 }

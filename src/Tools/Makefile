@@ -1,4 +1,3 @@
-
 CC=gcc
 MPICC=mpicc
 
@@ -10,9 +9,15 @@ CORE = alloc.o complex.o franuni.o fft.o sinc.o split.o SegyRead.o
 
 segycut :  segycut.o $(CORE) $(PAR) 
 	$(CC) $(FLAG) -o segycut  segycut.o $(CORE) $(PAR) 
+
+makemodel : makemodel.o $(CORE) $(PAR) 
+	$(CC) $(FLAG) -o makemodel  makemodel.o $(CORE) $(PAR)
 	
 segycut.o:  segycut.c
 	$(CC) $(FLAG) -c   segycut.c
+
+makemodel.o: makemodel.c
+	$(CC) $(FLAG) -c   makemodel.c
 
 atopkge.o: atopkge.c
 	$(CC) $(FLAG) -c atopkge.c
@@ -54,9 +59,9 @@ SegyRead.o: SegyRead.c
 	$(CC) $(FLAG) -c SegyRead.c
 
 clean:
-	rm -f *.o  segycut
+	rm -f *.o  segycut makemodel
 
-all: segycut
+all: segycut makemodel
 
-install: segycut
-	cp segycut ../../bin
+install: segycut makemodel
+	cp segycut makemodel ../../bin
