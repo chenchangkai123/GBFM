@@ -12,7 +12,7 @@ nz=100
 velocity=1500
 
 # segycut
-../../bin/makehead output=$output nx=$nx nz=$nz velocity=$velocity
+../../bin/makemodel output=$output nx=$nx nz=$nz velocity=$velocity
 
 
 

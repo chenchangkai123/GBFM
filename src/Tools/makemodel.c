@@ -26,7 +26,7 @@ int main(int argc, char **argv)
     if (!getparfloat("velocity", &velocity))
         velocity = 1500.0;
 
-    outfp=(output, "wb");
+    outfp=fopen(output, "wb");
     for (i=0; i<nz; i++)
     {
         for (j=0; j<nx; j++)
