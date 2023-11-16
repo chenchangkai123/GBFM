@@ -103,8 +103,8 @@ typedef struct CellsStruct
 	float lmin;	 /* minimum beamwidth for frequency wmin */
 	Cell **cell; /* cell array[mx][mz] */
 	Ray *ray;	 /* ray */
-	//	BeamData *bd;	/* complex beam data as a function of complex time */
-	//	float **g;	/* array[nx][nz] containing g(x,z) */
+				 //	BeamData *bd;	/* complex beam data as a function of complex time */
+				 //	float **g;	/* array[nx][nz] containing g(x,z) */
 } Cells;
 
 /* Input the shot gather and head info*/
@@ -180,11 +180,11 @@ int main(int argc, char *argv[])
 	float **oriv;
 	float **tt;
 	double *residual;
-	int kt,totaltr;
+	int kt, totaltr;
 	int np, myid;
 
 	FILE *vfp;
-	FILE *sfp,*dfp;
+	FILE *sfp, *dfp;
 	// FILE *rfp, *ufp, *mfp; /* temp file to hold traces	*/
 	FILE *headRecfp, *headShotfp, *headInfofp;
 	char *headRec, *headShot, *headInfo;
@@ -251,8 +251,8 @@ int main(int argc, char *argv[])
 
 	/* open files */
 	vfp = fopen(vfile, "rb+");
-	sfp=fopen(seifile,"rb+");
-	dfp=fopen(imgfile,"wb+");
+	sfp = fopen(seifile, "rb+");
+	dfp = fopen(imgfile, "wb+");
 	// rfp = fopen(reftfile, "wb+");
 	// ufp = fopen(orgfile, "wb+");
 	headInfofp = fopen(headInfo, "r");
@@ -356,13 +356,21 @@ int main(int argc, char *argv[])
 		firp = headInformation[ishot].firec / dx;
 		ntr = headInformation[ishot].ntr;
 		totaltr = headInformation[ishot].tataltr;
-		
+
 		// printf("sp=%d firp=%d ntr=%d\n", sp, firp, ntr);
 
 		sp = sp - cdpmin;
 		firp = firp - cdpmin;
 		lastp = firp + NINT((ntr - 1) * dtr / dx);
+
 		printf("firstp=%d lastp=%d\n", firp, lastp);
+
+		if (sp > nx - 1)
+		{
+			printf("\033[1;35mshot point is out of range\n");
+			printf("skip this shot\n\033[0m");
+			continue;
+		}
 		firstp = MIN(sp, firp);
 
 		apermin = MAX(firstp - naper, 0);
@@ -387,19 +395,20 @@ int main(int argc, char *argv[])
 
 #if 1
 		/* input seismic data, then migrate them */
-		fseek(sfp,sizeof(float)*totaltr*nt,SEEK_SET);
-		for(i=0;i<ntr;i++) {
-			fread(orif[i],sizeof(float),nt,sfp);
+		fseek(sfp, sizeof(float) * totaltr * nt, SEEK_SET);
+		for (i = 0; i < ntr; i++)
+		{
+			fread(orif[i], sizeof(float), nt, sfp);
 		}
-		fseek(sfp,0,SEEK_SET);
-							
-    		/* migrate the data*/
-		memset(&tempg[0][0],0,sizeof(float)*nz*apernum);	
-		csmiggb(MIG,bwh,fmin,fmax,amin,amax,live,dead,nt,dt,sp,firp,
-			apernum,dx,ntr,dtr,nz,dz,orif,tempv,tempg);
+		fseek(sfp, 0, SEEK_SET);
+
+		/* migrate the data*/
+		memset(&tempg[0][0], 0, sizeof(float) * nz * apernum);
+		csmiggb(MIG, bwh, fmin, fmax, amin, amax, live, dead, nt, dt, sp, firp,
+				apernum, dx, ntr, dtr, nz, dz, orif, tempv, tempg);
 
 		/* accmulate the subimage to image */
-		partall(-1,nz,apernum,apermin,tempg,orig);
+		partall(-1, nz, apernum, apermin, tempg, orig);
 #endif
 
 #if 0
@@ -435,12 +444,13 @@ int main(int argc, char *argv[])
 	MPI_Barrier(MPI_COMM_WORLD);
 
 	// write out LSM-image//
-	 if(myid==0) {
-	 	for(ix=0;ix<nx;ix++)
-	 	{
-	 		fwrite(origall[ix],sizeof(float),nz,dfp);
-	 	}
-	 }
+	if (myid == 0)
+	{
+		for (ix = 0; ix < nx; ix++)
+		{
+			fwrite(origall[ix], sizeof(float), nz, dfp);
+		}
+	}
 
 	fclose(dfp);
 	fclose(sfp);
