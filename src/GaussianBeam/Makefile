@@ -78,4 +78,4 @@ clean:
 all: forward migration makehead subtract lsm generate migrationGBS
 
 install: forward migration makehead subtract lsm generate migrationGBS
-	cp forward migration makehead subtract lsm generate migrationGBS ../bin
+	cp forward migration makehead subtract lsm generate migrationGBS ../../bin
