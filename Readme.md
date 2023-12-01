@@ -18,7 +18,7 @@ Gaussian beam method is a high-frequency asymptotic method for solving wave equa
 The key formula of GBM is
 
 $$
-u(s,n,\omega )=\Psi \sqrt{\frac{V(s)}{Q(s)} }exp\left\{i\omega\tau (s)+\frac{i\omega }{2V(s)}K(s)n^{2}-\frac{n^{2} }{L^{2}(s) } \right\}  
+u(s,n,\omega )=\Psi \sqrt{\frac{V(s)}{Q(s)} }exp\{i\omega\tau (s)+\frac{i\omega }{2V(s)}K(s)n^{2}-\frac{n^{2} }{L^{2}(s) } \}  
 $$
 
 We use this formula for seismic forward modeling and migration. During forward modeling, a reflection coefficient profile is usually required, while during migration, a common shot domain gather and a smooth velocity model are required.
