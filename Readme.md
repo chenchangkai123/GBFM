@@ -16,10 +16,12 @@ This is a software package for Gaussian beam forward modeling and migration.
 
 Gaussian beam method is a high-frequency asymptotic method for solving wave equation, usually used for seismic imaging. 
 The key formula of GBM is
+
 $$
 u(s,n,\omega )=\Psi \sqrt{\frac{V(s)}{Q(s)} }exp\left \{ i\omega\tau (s)+\frac{i\omega }{2V(s)}
 K(s)n^{2}-\frac{n^{2} }{L^{2}(s) }     \right \}  
 $$
+
 We use this formula for seismic forward modeling and migration. During forward modeling, a reflection coefficient profile is usually required, while during migration, a common shot domain gather and a smooth velocity model are required.
 
 ## Picture
